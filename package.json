@@ -1,0 +1,54 @@
+{
+  "name": "serverless-url-shortener",
+  "version": "1.0.0",
+  "description": "A modern serverless URL shortener built with AWS Lambda and PostgreSQL",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "npm run build:functions",
+    "build:functions": "node scripts/build-functions.js",
+    "deploy:dev": "terraform -chdir=infrastructure/environments/dev apply",
+    "deploy:staging": "terraform -chdir=infrastructure/environments/staging apply",
+    "deploy:prod": "terraform -chdir=infrastructure/environments/prod apply",
+    "lint": "eslint src/ --fix",
+    "format": "prettier --write src/**/*.js"
+  },
+  "keywords": [
+    "serverless",
+    "url-shortener",
+    "aws-lambda",
+    "postgresql",
+    "redis",
+    "terraform",
+    "nodejs"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "pg": "^8.11.3",
+    "redis": "^4.6.10",
+    "joi": "^17.11.0",
+    "nanoid": "^3.3.7",
+    "aws-sdk": "^2.1491.0",
+    "winston": "^3.11.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1",
+    "terraform": "^1.6.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
